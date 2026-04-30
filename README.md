@@ -16,5 +16,5 @@
 nome: Theo Prado
 idade: 15 anos
 localização: Lençóis Paulista, SP
-estudante_de: Python & ERP (Enterprise Resource Planning)
+estudante_de: Python
 sobre: "Apaixonado por tecnologia e sempre aprendendo algo novo"
