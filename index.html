@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theo Prado | Desenvolvedor Python</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-card: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #1f6feb;
+            --border: #30363d;
+            --success: #3fb950;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animação de fundo */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--accent) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--success) 0%, transparent 50%);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            margin-bottom: 20px;
+            box-shadow: 0 0 30px rgba(88, 166, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .location {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Seções */
+        section {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        h2 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            font-size: 1.3rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Tags/Habilidades */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: var(--bg-card);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Projetos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(88, 166, 255, 0.2);
+        }
+
+        .project-card h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .project-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--success);
+        }
+
+        /* Links Sociais */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(88, 166, 255, 0.4);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Email */
+        .email-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .email-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-link:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Animações */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* Efeito de digitação */
+        .typing-effect::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <!-- Substitua o src abaixo pelo link direto da sua imagem -->
+            <img src="https://via.placeholder.com/180" alt="Theo Prado" class="profile-img" id="profileImg">
+            <h1>Theo Prado</h1>
+            <p class="tagline typing-effect">Desenvolvedor Python & Estudante de ERP</p>
+            <p class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                Lençóis Paulista, SP
+            </p>
+        </header>
+
+        <!-- Sobre -->
+        <section>
+            <h2><i class="fas fa-user"></i> Sobre Mim</h2>
+            <p>Apaixonado por tecnologia e sempre aprendendo algo novo</p>
+            <p>Tenho 15 anos e estou mergulhando no mundo da programação com Python, com foco especial em sistemas ERP (Enterprise Resource Planning). Acredito que a tecnologia tem o poder de transformar negócios e facilitar o dia a dia das pessoas.</p>
+            
+            <div class="tags">
+                <span class="tag"><i class="fas fa-code"></i> Python</span>
+                <span class="tag"><i class="fas fa-database"></i> ERP</span>
+                <span class="tag"><i class="fas fa-laptop-code"></i> Web Development</span>
+                <span class="tag"><i class="fas fa-language"></i> Inglês</span>
+            </div>
+        </section>
+
+        <!-- Interesses -->
+        <section>
+            <h2><i class="fas fa-heart"></i> Interesses & Hobbies</h2>
+            <p>Quando não estou codando, você pode me encontrando:</p>
+            <div class="tags">
+                <span class="tag"><i class="fas fa-gamepad"></i> Jogando Video Games</span>
+                <span class="tag"><i class="fas fa-book"></i> Lendo</span>
+                <span class="tag"><i class="fas fa-tv"></i> Vendo Séries</span>
+                <span class="tag"><i class="fas fa-brain"></i> Aprendendo Novas Tecnologias</span>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section>
+            <h2><i class="fas fa-folder-open"></i> Meus Projetos</h2>
+            <p>Alguns dos projetos que desenvolvi e estão disponíveis:</p>
+            
+            <div class="projects-grid">
+                <a href="https://theo-prado.github.io/Cafe/" target="_blank" class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>Autotendimento Canelinha Cafe</h3>
+                    <p>Sistema de autoatendimento para cafeteria com interface moderna e funcional.</p>
+                </a>
+
+                <a href="https://theo-prado.github.io/Terco-Digital/" target="_blank" class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Terço Digital</h3>
+                    <p>Aplicação web interativa para prática do terço com recursos digitais.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section>
+            <h2><i class="fas fa-link"></i> Links & Contato</h2>
+            <p style="text-align: center;">Conecte-se comigo!</p>
+            
+            <div class="social-links">
+                <a href="https://linktr.ee/theo.silva.prado" target="_blank" class="social-btn">
+                    <i class="fas fa-link"></i>
+                    Linktree
+                </a>
+                
+                <a href="https://github.com/theo-prado" target="_blank" class="social-btn">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                
+                <a href="mailto:theo.silva.prado@gmail.com" class="social-btn">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+
+            <div class="email-section">
+                <p style="margin-top: 20px;">
+                    <i class="fas fa-paper-plane"></i> 
+                    <a href="mailto:theo.silva.prado@gmail.com" class="email-link">theo.silva.prado@gmail.com</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Desenvolvido com <i class="fas fa-heart" style="color: var(--success);"></i> por Theo Prado</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">© 2026 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Animação suave ao scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Efeito de digitação no subtítulo
+        const tagline = document.querySelector('.tagline');
+        const text = tagline.textContent;
+        tagline.textContent = '';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                tagline.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        // Inicia a animação de digitação após 1 segundo
+        setTimeout(typeWriter, 1000);
+
+        // Dica: Para usar sua foto do Instagram, você precisa:
+        // 1. Baixar a imagem
+        // 2. Colocar na pasta do projeto
+        // 3. Atualizar o src da img para: src="sua-foto.jpg"
+        // Ou usar um link direto da imagem (não o link do post)
+    </script>
+</body>
+</html>
