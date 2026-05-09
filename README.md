@@ -1,24 +1,24 @@
-# Theo Prado Portfolio Site
+# 🌐 Theo Prado Portfolio Site
 
 A single-page personal portfolio website built with plain HTML and CSS.
 
-## Overview
+## ✨ Overview
 
 This project contains a responsive portfolio landing page for Theo Prado, highlighting:
 
-- Intro/header section
-- About section
-- Skills tags
-- Project cards
-- Social/contact links
+- 👋 Intro/header section
+- 🙋 About section
+- 🛠️ Skills tags
+- 📁 Project cards
+- 🔗 Social/contact links
 
-## Tech Stack
+## 🧰 Tech Stack
 
 - HTML5
 - CSS3 (embedded in `index.html`)
 - Font Awesome (via CDN)
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 .
@@ -26,7 +26,7 @@ This project contains a responsive portfolio landing page for Theo Prado, highli
 └── README.md    # Project documentation
 ```
 
-## Run Locally
+## ▶️ Run Locally
 
 No build step is required.
 
@@ -43,14 +43,14 @@ Then visit:
 
 - `http://localhost:8000`
 
-## Customization
+## 🎨 Customization
 
 You can customize the page by editing `index.html`:
 
-- Update profile text and sections in the HTML body.
-- Adjust colors and spacing in the CSS `:root` variables and style rules.
-- Add or remove project cards and social links.
+- ✏️ Update profile text and sections in the HTML body.
+- 🎛️ Adjust colors and spacing in the CSS `:root` variables and style rules.
+- ➕ Add or remove project cards and social links.
 
-## License
+## 📄 License
 
 This project is open for personal learning and portfolio use.
